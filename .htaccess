@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+    # Mengarahkan root project ke public/ agar bisa diakses langsung
+    # lewat document root project (mis. Laragon default).
+    # Untuk produksi, lebih baik set DocumentRoot langsung ke folder public/.
+    RewriteEngine On
+    # Jangan rewrite ulang bila request sudah mengarah ke folder public/
+    RewriteCond %{REQUEST_URI} !/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
